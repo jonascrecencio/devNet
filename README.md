@@ -1,7 +1,7 @@
 # devNet
 
-Olá!
+Hello!
 
-Este é meu repositório de estudos!
+This is my study repository!
 
-Bem-vindo =)
+Welcome =)
