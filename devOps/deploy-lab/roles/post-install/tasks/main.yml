@@ -15,16 +15,15 @@
 - name: Get shortname
   command: "hostname -s"
   register: shortname
-- name: Setup /etc/hosts for IPv4
+- name: Setup /etc/hosts
   lineinfile:
     path: /etc/hosts
     regexp: '^127\.0\.0\.1'
-    line: '127.0.0.1 localhost localhost.localdomain localhost4 localhost4.localdomain4 {{ shortname.stdout }} {{ inventory_hostname }}'
-- name: Setup /etc/hosts for IPv6
-  lineinfile:
-    path: /etc/hosts
-    regexp: '^\:\:1'
-    line: '::1 localhost localhost.localdomain localhost6 localhost6.localdomain6 {{ shortname.stdout }} {{ inventory_hostname }}'
+    line: "{{ item }}"
+  with_items:
+    - '127.0.0.1 localhost localhost.localdomain localhost4 localhost4.localdomain4 {{ inventory_hostname }} {{ shortname.stdout }}'
+    - '::1 localhost localhost.localdomain localhost6 localhost6.localdomain6 {{ inventory_hostname }} {{ shortname.stdout }}'
+    - '{{ ansible_default_ipv4.address}} {{ inventory_hostname }} {{ shortname.stdout }}'
 - name: Update system
   yum:
     name: '*'
