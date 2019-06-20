@@ -6,6 +6,7 @@
       - "@Virtualization Client"
       - "@Virtualization Platform"
       - "@Virtualization Tools"
+      - libvirt-devel
     state: latest
 - name: Enable and start libvirtd
   systemd:
