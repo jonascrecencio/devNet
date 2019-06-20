@@ -1,0 +1,32 @@
+---
+- name: Disable SELINUX
+  selinux:
+    policy: targeted
+    state: permissive
+- name: Disable firewalld
+  systemd:
+    name: firewalld
+    enabled: no
+    state: stopped
+- name: Setup DNS Server
+  template:
+    src: ../templates/resolv.conf.j2
+    dest: /etc/resolv.conf
+- name: Get shortname
+  command: "hostname -s"
+  register: shortname
+- name: Setup /etc/hosts for IPv4
+  lineinfile:
+    path: /etc/hosts
+    regexp: '^127\.0\.0\.1'
+    line: '127.0.0.1 localhost localhost.localdomain localhost4 localhost4.localdomain4 {{ shortname.stdout }} {{ inventory_hostname }}'
+- name: Setup /etc/hosts for IPv6
+  lineinfile:
+    path: /etc/hosts
+    regexp: '^\:\:1'
+    line: '::1 localhost localhost.localdomain localhost6 localhost6.localdomain6 {{ shortname.stdout }} {{ inventory_hostname }}'
+- name: Update system
+  yum:
+    name: '*'
+    update_cache: yes
+    state: latest

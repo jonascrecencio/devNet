@@ -1,0 +1,15 @@
+---
+- name: Install devOps server Lab
+  hosts:  all
+  become: yes
+  strategy: free
+
+  roles:
+    - ../roles/name
+    - ../roles/post-install
+    - ../roles/repos
+    - ../roles/utils
+    - ../roles/kvm
+    
+  vars_files:
+    - ../vars/main.yml

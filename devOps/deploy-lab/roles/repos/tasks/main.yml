@@ -1,0 +1,6 @@
+---
+- name: Setup EPEL repo
+  yum:
+    name: epel-release
+    update_cache: yes
+    state: latest

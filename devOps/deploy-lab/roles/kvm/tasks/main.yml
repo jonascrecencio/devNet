@@ -1,0 +1,14 @@
+---
+- name: Install Virtualization Packages
+  yum:
+    name:
+      - "@Virtualization Hypervisor"
+      - "@Virtualization Client"
+      - "@Virtualization Platform"
+      - "@Virtualization Tools"
+    state: latest
+- name: Enable and start libvirtd
+  systemd:
+    name: libvirtd
+    enabled: yes
+    state: started
