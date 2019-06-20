@@ -1,0 +1,7 @@
+---
+- name: Install Vagrant
+  yum:
+    name: "{{ vagrant_pkg }}"
+    state: latest
+- name: Install vagrant-libvirt plugin
+  shell: vagrant plugin install vagrant-libvirt
