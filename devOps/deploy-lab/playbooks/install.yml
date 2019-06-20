@@ -11,6 +11,7 @@
     - ../../../lib/ansible/roles/utils
     - ../../../lib/ansible/roles/kvm
     - ../../../lib/ansible/roles/vagrant
+    - ../../../lib/ansible/roles/ansible
     
   vars_files:
     - ../vars/main.yml
