@@ -2,3 +2,4 @@ dnsserver:
   - 8.8.8.8
   - 1.1.1.1
 local_domain: devOpslab.local
+vagrant_pkg: https://releases.hashicorp.com/vagrant/2.2.4/vagrant_2.2.4_x86_64.rpm
