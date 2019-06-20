@@ -19,16 +19,16 @@
   lineinfile:
     path: /etc/hosts
     regexp: '^127\.0\.0\.1'
-    line: '127.0.0.1 localhost localhost.localdomain localhost4 localhost4.localdomain4 {{ inventory_hostname }} {{ shortname.stdout }}'
+    line: '127.0.0.1 localhost localhost.localdomain localhost4 localhost4.localdomain4 {{ shortname.stdout }}.{{ local_domain }} {{ shortname.stdout }}'
 - name: Setup /etc/hosts localhost IPv6
   lineinfile:
     path: /etc/hosts
     regexp: '^::1'
-    line: '::1 localhost localhost.localdomain localhost6 localhost6.localdomain6 {{ inventory_hostname }} {{ shortname.stdout }}'
+    line: '::1 localhost localhost.localdomain localhost6 localhost6.localdomain6 {{ shortname.stdout }}.{{ local_domain }} {{ shortname.stdout }}'
 - name: Setup /etc/hosts
   lineinfile:
     path: /etc/hosts
-    line: '{{ ansible_default_ipv4.address}} {{ inventory_hostname }} {{ shortname.stdout }}'
+    line: '{{ ansible_default_ipv4.address}} {{ shortname.stdout }}.{{ local_domain }} {{ shortname.stdout }}'
 - name: Update system
   yum:
     name: '*'
