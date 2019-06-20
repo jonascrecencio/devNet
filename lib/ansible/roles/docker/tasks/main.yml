@@ -7,3 +7,8 @@
       - containerd.io
     state: latest
     update_cache: yes
+- name: Enable and start Docker
+  systemd:
+    name: docker
+    enabled: yes
+    state: started
