@@ -5,11 +5,11 @@
   strategy: free
 
   roles:
-    - ../roles/name
-    - ../roles/post-install
-    - ../roles/repos
-    - ../roles/utils
-    - ../roles/kvm
+    - ../../../lib/ansible/roles/name
+    - ../../../lib/ansible/roles/post-install
+    - ../../../lib/ansible/roles/repos
+    - ../../../lib/ansible/roles/utils
+    - ../../../lib/ansible/roles/kvm
     
   vars_files:
     - ../vars/main.yml
