@@ -1,0 +1,14 @@
+---
+- name: VM Provisioning
+  hosts:  all
+  become: yes
+  strategy: free
+
+  roles:
+    - ../../../lib/ansible/roles/name
+    - ../../../lib/ansible/roles/post-install
+    - ../../../lib/ansible/roles/repos
+    - ../../../lib/ansible/roles/utils
+    
+  vars_files:
+    - vars/main.yml

@@ -1,0 +1,4 @@
+dnsserver:
+  - 8.8.8.8
+  - 1.1.1.1
+local_domain: devOpslab.local
