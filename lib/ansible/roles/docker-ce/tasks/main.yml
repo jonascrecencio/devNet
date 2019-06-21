@@ -1,7 +1,10 @@
 ---
-- name: Install Docker
+- name: Install Docker CE
   yum:
-    name: docker
+    name:
+      - docker-ce
+      - docker-ce-cli
+      - containerd.io
     state: latest
     update_cache: yes
 - name: Enable and start Docker
