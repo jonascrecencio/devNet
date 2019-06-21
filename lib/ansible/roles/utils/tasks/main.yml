@@ -7,5 +7,7 @@
       - tcpdump
       - nmap
       - mtr
+      - htop
+      - wget
       - "@Development tools"
     state: latest
