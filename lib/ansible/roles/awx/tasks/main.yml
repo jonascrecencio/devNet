@@ -1,0 +1,14 @@
+---
+- name: Clone AWX repo
+  git:
+    repo: 'https://github.com/ansible/awx.git'
+    dest: /root/awx/
+- name: Install Python pip
+  yum:
+    name: python-pip
+    state: latest
+- name: Install docker required packages
+  pip:
+    name:
+      - docker
+      - docker-compose
