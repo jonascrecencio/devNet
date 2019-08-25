@@ -9,6 +9,7 @@
     - ../../../lib/ansible/roles/post-install
     - ../../../lib/ansible/roles/repos
     - ../../../lib/ansible/roles/utils
+    - ../../../lib/ansible/roles/snmp
     - ../../../lib/ansible/roles/kvm
     - ../../../lib/ansible/roles/vagrant
     - ../../../lib/ansible/roles/ansible

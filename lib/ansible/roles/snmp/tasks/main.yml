@@ -1,0 +1,17 @@
+---
+- name: Install SNMP Packages
+  yum:
+    name:
+      - net-snmp
+      - net-snmp-utils
+    state: latest
+- name: Configure default ro community
+  template:
+    src: ../templates/snmpd.conf.j2
+    dest: /etc/snmpd.conf
+    backup: yes
+- name: Enable and start snmpd
+  systemd:
+    name: snmpd
+    enabled: yes
+    state: started
