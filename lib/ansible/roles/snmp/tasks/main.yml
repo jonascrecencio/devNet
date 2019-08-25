@@ -6,12 +6,18 @@
       - net-snmp-utils
     state: latest
 - name: Configure default ro community
-  template:
-    src: ../templates/snmpd.conf.j2
-    dest: /etc/snmpd.conf
+  lineinfile:
+    path: /etc/snmp/snmpd.conf
+    regexp: '^com2sec notConfigUser'
+    line: 'com2sec notConfigUser  default       jonascrecencio'
     backup: yes
-- name: Enable and start snmpd
+- name: Setup SNMP tree
+  lineinfile:
+    path: /etc/snmp/snmpd.conf
+    line: 'view    systemview    included   .1'
+    insertafter: '^view'
+- name: Enable and restart snmpd
   systemd:
     name: snmpd
     enabled: yes
-    state: started
+    state: restarted
